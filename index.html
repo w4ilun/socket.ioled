@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>socket.ioled</title>
+  <meta charset="utf-8">
+  <meta author="Wai Lun Poon">
+  <meta description="A WebSocket connected canvas that draws on the SSD1306 OLED display">  
+  <script src="socket.io.js"></script>
+  <style>
+    body{
+      font-family: Helvetica;
+      text-align: center;
+    }
+    #oled{
+      background-color:#000000;
+      border:1px solid #000000;
+      cursor:crosshair;
+    }
+  </style>
+</head>
+<body>
+  <h1>socket.ioled</h1>
+  <canvas id="oled" width="128" height="64"></canvas>
+  <br/>
+  <button id="clear">clear</button>
+  <button id="invert">invert</button>
+  <script>
+  (function(){
+
+    /*
+    ** @param socket {object}
+    ** @description create a websocket connection using Socket.IO
+    */
+    var socket = io.connect('http://EDISON_IP_ADDRESS:3000');
+
+    /*
+    ** @param canvas {object}
+    */      
+    var canvas = document.getElementById('oled');
+
+    /*
+    ** @param ctx {object} canvas context
+    */      
+    var ctx = canvas.getContext("2d");
+
+    /*
+    ** @param clearBtn {object} clear button
+    */      
+    var clearBtn = document.getElementById('clear');
+
+    /*
+    ** @param invertBtn {object} invert button
+    */      
+    var invertBtn = document.getElementById('invert');      
+
+    /*
+    ** @param draw {boolean} flag for enabling draw
+    */        
+    var draw = false;
+
+    /*
+    ** @param fillColor {string} color of fill on canvas
+    */
+    var fillColor = "#00FFFF";
+
+    /*
+    ** @param invert {boolean} invert pixels
+    */
+    var invert = false;     
+
+
+    /*
+    ** @description disable antialiasing, optional
+    */
+    ctx.imageSmoothingEnabled = false;
+
+    canvas.addEventListener("mousemove",function(e){
+      var rect = canvas.getBoundingClientRect();
+      var x = Math.floor(e.clientX - rect.left);
+      var y = Math.floor(e.clientY - rect.top);
+      if(draw){
+        ctx.fillStyle = fillColor;
+        ctx.fillRect(x, y, 1, 1);
+        socket.emit('draw',{x:x,y:y});
+      }
+    });
+
+    /*
+    ** @description enable drawing if mouse is down
+    */
+    canvas.addEventListener("mousedown",function(e){
+      draw = true;
+    });
+
+    /*
+    ** @description disable drawing if mouse is up
+    */
+    canvas.addEventListener("mouseup",function(e){
+      draw = false;
+    });
+
+    /*
+    ** @description disable drawing if mouse leaves canvas
+    */
+    canvas.addEventListener("mouseleave",function(e){
+      draw = false;
+    });
+
+    /*
+    ** @description clear local canvas and oled display
+    */
+    clearBtn.addEventListener("click",function(e){
+      ctx.clearRect(0,0,canvas.width,canvas.height);
+      socket.emit('clear');
+    });
+
+    /*
+    ** @description invert the pixels on the canvas and oled display
+    */
+    invertBtn.addEventListener("click",function(e){
+      invert = !invert;
+      socket.emit('invert',invert);
+    });     
+
+  })();
+  </script>
+</body>
+</html>

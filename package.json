@@ -1,0 +1,25 @@
+{
+  "name": "socket.ioled",
+  "version": "1.0",
+  "description": "johnny-five, oled-js, edison-io, socket.io",
+  "main": "index.js",
+  "dependencies": {
+    "johnny-five": "*",
+    "edison-io": "*",
+    "express": "*",
+    "socket.io": "*",
+    "oled-js": "*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/w4ilun/socket.ioled.git"
+  },
+  "keywords": [
+    "johnny-five",
+    "oled",
+    "socket.io"
+  ],
+  "author": "Wai Lun Poon",
+  "license": "MIT",
+  "homepage": "https://github.com/w4ilun/socket.ioled.git"
+}
