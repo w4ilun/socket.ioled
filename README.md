@@ -1,11 +1,15 @@
 Socket.IOled
 ========================
 
-![socket.ioled](https://raw.githubusercontent.com/wiki/w4ilun/socket.ioled/images/app.JPG)
+![video](https://raw.githubusercontent.com/wiki/w4ilun/socket.ioled/images/video.gif)
 
 ## What is this?
 
 A fun little project that connects an HTML Canvas to a SSD1306 OLED controller/display via Socket.IO. This is built on top of Rick Waldron's [johnny-five](https://github.com/rwaldron/johnny-five) project and Suz Hinton's [oled-js](https://github.com/noopkat/oled-js) project. Powered by the [Intel Edison](http://www.intel.com/content/www/us/en/do-it-yourself/edison.html)
+
+![app](https://raw.githubusercontent.com/wiki/w4ilun/socket.ioled/images/app.JPG)
+
+![oled](https://raw.githubusercontent.com/wiki/w4ilun/socket.ioled/images/oled.JPG)
 
 ## Install 
 
