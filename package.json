@@ -1,6 +1,6 @@
 {
   "name": "socket.ioled",
-  "version": "1.0",
+  "version": "1.0.0",
   "description": "johnny-five, oled-js, edison-io, socket.io",
   "main": "index.js",
   "dependencies": {
