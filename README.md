@@ -17,7 +17,7 @@ Make sure your Intel Edison has the latest updates.
 
 1. Git clone this repository and transfer the files over to your Intel Edison
 2. `npm install`
-3. Replace the IP address `var socket = io.connect('http://EDISON_IP_ADDRESS:3000');`
+3. Replace the IP address in `index.html`
 4. `node index.js`
 5. ???
 6. Profit!!!
