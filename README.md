@@ -1,7 +1,7 @@
 Socket.IOled
 ========================
 
-![socket.ioled](http://.png)
+![socket.ioled](https://raw.githubusercontent.com/wiki/w4ilun/socket.ioled/images/app.JPG)
 
 ## What is this?
 
@@ -18,7 +18,7 @@ Make sure your Intel Edison has the latest updates.
 5. ???
 6. Profit!!!
 
-## I2C screens
+## I<sup>2</sup>C screens (SSD1306)
 Connect your pins as follows (LEFT: OLED, RIGHT: INTEL EDISON):
 
 + VCC => 3.3V
